@@ -1,0 +1,94 @@
+{
+  "name": "marginalia",
+  "displayName": "Marginalia",
+  "description": "Render code comments as flush-right marginalia.",
+  "version": "0.0.1",
+  "publisher": "mcclowes",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Marginalia",
+      "properties": {
+        "marginalia.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable comment marginalia rendering."
+        },
+        "marginalia.commentKinds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["line", "block"]
+          },
+          "default": ["line", "block"],
+          "description": "Which kinds of comments to render as marginalia."
+        },
+        "marginalia.dimInlineOpacity": {
+          "type": "number",
+          "default": 0.25,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Opacity applied to the original inline comment text."
+        },
+        "marginalia.alignment": {
+          "type": "string",
+          "enum": ["column", "trailing"],
+          "default": "column",
+          "description": "How to position marginalia. 'column' aligns every comment at one shared right-hand column; 'trailing' places each just after its own line."
+        },
+        "marginalia.anchorColumn": {
+          "type": "number",
+          "default": 120,
+          "description": "Column at which marginalia are aligned. Lines longer than this trail just after their code instead."
+        },
+        "marginalia.maxLength": {
+          "type": "number",
+          "default": 100,
+          "description": "Maximum characters per marginalia chip. Longer comments wrap onto subsequent free lines; if there isn't room the remainder is shown on hover."
+        },
+        "marginalia.italic": {
+          "type": "boolean",
+          "default": true,
+          "description": "Render marginalia in italics."
+        },
+        "marginalia.todoTags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["TODO", "FIXME", "XXX", "HACK"],
+          "description": "Comments beginning with any of these tags are highlighted in red. Set to [] to disable."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "marginalia.toggle",
+        "title": "Marginalia: Toggle"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}
