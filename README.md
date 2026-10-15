@@ -39,6 +39,8 @@ npm run watch     # rebuild on change
 npm test          # run the Vitest suite
 ```
 
+CI runs a locked install, compilation, and the unit suite on Node 20 and 24 for pull requests and pushes to `main`.
+
 Press `F5` in VS Code to launch an Extension Development Host with the extension loaded.
 
 ## License
