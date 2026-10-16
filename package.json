@@ -88,7 +88,7 @@
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/vscode": "^1.85.0",
-    "typescript": "^5.4.0",
+    "typescript": "^7.0.2",
     "vitest": "^1.4.0"
   },
   "overrides": {
